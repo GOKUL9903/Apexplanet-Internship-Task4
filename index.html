@@ -20,12 +20,13 @@
     }
     nav {
       display: flex;
-      justify-content: center;
+      padding: 10px;
+      justify-content: space-between;
       background-color: #5f5e5e;
     }
     nav a {
       color: white;
-      padding: 5px 80px;
+      padding: 5px 20px; margin: 0 15px;
       text-decoration: none;
       cursor: pointer;
     }
@@ -58,7 +59,7 @@
             background-color: #2e6bf0;
             color: #ffffff;
             text-align: center;
-            padding: 25px 20px;
+            padding: 25px 20px; margin: 20px auto;
             position: relative; border-radius: 10px;
         }
         .profile img {
@@ -214,6 +215,19 @@
             .product-list {
                 grid-template-columns: 1fr;
             }
+            .navbar{
+                flex-direction: column;
+                align-items: center;
+            }
+            .navbar a {
+                margin: 5px 0;
+            }
+            .profile {
+                width: 90%;
+            }
+            h1, h2 {
+                font-size: 1.5em;
+            }
         }
   </style>
 </head>
@@ -223,9 +237,9 @@
   </header>
 
   <nav>
-    <a data-target="portfolio"><h4>Portfolio</h4></a>
-    <a data-target="todo"><h4>To-Do List</h4></a>
-    <a data-target="products"><h4>Product Listing</h4></a>
+    <a data-target="portfolio">Portfolio</a>
+    <a data-target="todo">To-Do List</a>
+    <a data-target="products">Product Listing</a>
   </nav>
 
   <main>
