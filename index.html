@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Task 4</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #1e1e2f;
+      color: #f8f9fa;
+    }
+    header {
+      background-color: #ff6f61;
+      color: white;
+      padding: 15px;
+      text-align: center;
+    }
+    nav {
+      display: flex;
+      justify-content: center;
+      background-color: #5f5e5e;
+    }
+    nav a {
+      color: white;
+      padding: 5px 80px;
+      text-decoration: none;
+      cursor: pointer;
+    }
+    nav a:hover {
+      background-color: #575757;
+      color: #ff6f61 ;
+      border-bottom:#ff402e;
+    }
+    section {
+      padding: 10px;
+      margin: 10px;
+      background-color: #2c2c3c;
+      border-radius: 8px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      display: none;
+    }
+    section.active {
+      display: block;
+    }
+        .resume-container {
+            width: 90%; padding-left: 5% ;
+            margin: 0px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+            overflow: hidden;
+            background-color: #2c2c3c;
+        }
+        /* Header styling */
+        .profile {
+            background-color: #2e6bf0;
+            color: #ffffff;
+            text-align: center;
+            padding: 25px 20px;
+            position: relative; border-radius: 10px;
+        }
+        .profile img {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            width: 120px;
+            height: 120px;
+            border: 3px solid white;
+        }
+        .profile h1 {
+            font-size: 2em;
+            margin-bottom: 10px;
+            margin: 20px auto;
+        }
+        .profile p {
+            font-size: 1em;
+        }
+        /* Main content styling */
+        .main-content {
+            padding: 30px;
+        }
+        .section {
+            margin-bottom: 30px;
+        }
+        .section h2 {
+            font-size: 1.6em;
+            color: #2e6bf0;
+            border-bottom: 2px solid #2e6bf0;
+            padding-bottom: 5px;
+            margin-bottom: 15px;
+        }
+        ul {
+            list-style: inside;
+            padding: 10px;
+        }
+        li {
+            margin-bottom: 10px;
+        }
+        .projects ul li a {
+            color: #2e6bf0;
+            text-decoration: none;
+        }
+        .projects ul li a:hover {
+            text-decoration: underline;
+        }
+        .todo-list{
+              padding: 10px 50px;
+              text-align: center;
+        }
+        .todo-container ul {
+            list-style: decimal-leading-zero;
+            padding: 10px;
+            width: 70%;
+        }
+
+        .todo-container li {
+            display: flex;
+            justify-content: space-between;
+            margin: 10px;
+            padding: 20px 30px;
+            background: #2a2a3b;
+            border-radius: 5px;
+        }
+
+        .todo-container input[type="text"] {
+            padding: 20px 30px;
+            border: 1px solid #9a8c98;
+            border-radius: 5px;
+            background: #2a2a3b;
+            color: rgb(255, 255, 255);
+            width: 50%;
+        }
+
+        .todo-container button {
+            background: #2e6bf0;
+            color: #22223b;
+            border: none;
+            padding: 20px 30px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .todo-container button:hover {
+            background: #2e6bf0; 
+            color: white;
+        }
+        .container {
+            width: 90%;  padding-left: 5%;
+            margin: 0px ;
+            background: #2c2c3c;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+        .shopping {
+            text-align: center;
+            padding: 20px;
+            background: #2874f0;
+            color: white;
+            border-radius: 10px;
+        }
+        .product-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+        }
+        .product {
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            padding: 15px;
+            text-align: center;
+            background: #2c2c3c;
+        }
+        .product img {
+            max-width: 100%;
+            height: 150px;
+            object-fit: cover;
+            margin-bottom: 10px;
+        }
+        .filter-sort {
+            padding-top: 5%;
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            margin-bottom: 20px;
+        }
+        .filter-sort select {
+            padding: 8px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            margin-bottom: 10px;
+            background: #2c2c3c;
+            color : #ffffff
+        }
+        .container button {
+            background: #2e6bf0;
+            color: #22223b;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .container button:hover {
+            background: #2e6bf0; 
+            color: white;
+        }
+        footer {
+             background-color: #474747;
+             padding: 10px 20px;
+             color: white;
+             text-align: center;
+        }  
+        @media (max-width: 768px){
+            .product-list {
+                grid-template-columns: 1fr;
+            }
+        }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Advanced Web Projects</h1>
+  </header>
+
+  <nav>
+    <a data-target="portfolio"><h4>Portfolio</h4></a>
+    <a data-target="todo"><h4>To-Do List</h4></a>
+    <a data-target="products"><h4>Product Listing</h4></a>
+  </nav>
+
+  <main>
+    <section id="portfolio" class="portfolio active">
+        <div class="resume-container">
+         <header class="profile">
+            <h1>GOKUL V</h1>
+            <p>Data Analyst | Web Developer</p>
+            <img src="images/profile.jpg" alt="Gokul V">
+         </header>
+            <div class="main-content">
+            <div class="section">
+                <h2>Objective</h2>
+                <p>Enthusiastic professional with a passion for data analytics and web development, seeking opportunities to leverage skills in HTML, CSS, and data-driven solutions.</p>
+            </div>
+            <div class="section">
+              <h2>Academics credential:</h2>
+             <p>I am currently pursuing a <b>Bachelor of Computer Science and Engineering</b> at <b>Tagore Institute od Engineering and Technology, Salem.</b> on Academics Years <b>2021 to 2025. 
+             </b></p>
+             <p>I completed my <b>Higher Secondary School Certificate(HSC)</b> in Biology-Maths from Government Higher Secondary School, Mangalmapettai from <b>2020 to 2021</b></p>
+             <p></p>
+            </div>
+            <div class="section">
+                <h2>Technical Skills</h2>
+                <ul>
+                    <li><strong>Programming:</strong> JavaScript, Python, Java</li>
+                    <li><strong>Web Development:</strong> HTML, CSS, React, Node.js</li>
+                    <li><strong>Data Analysis:</strong> SQL, Power BI, Excel</li>
+                    <li><strong>Tools:</strong> Git, Agile Development</li>
+                </ul>
+            </div>
+            <div class="section">
+                <h2>Certifications</h2>
+                <ul>
+                    <li>Data Analytics Essentials - Cisco Networking Academy (<a href="https://drive.google.com/file/d/15tZKE3cyOd27b_jlVliP3o4V2ASCDVVs/view?usp=drivesdk">View Certificate</a>)</li>
+                    <li>Online Portfolio using GitHub - Guvi (<a href="https://drive.google.com/file/d/135jqC5hrbNp282Jr1lynsVnbkaPc3ePC/view?usp=drivesdk">View Certificate</a>)</li>
+                    <li>Oracle Foundations Associate - Oracle University (<a href="https://drive.google.com/file/d/152WxPotu6m79cnJvw3ko5m4PcX1TYm1n/view?usp=drivesdk">View Certificate</a>)</li>
+                </ul>
+            </div>
+            <div class="section">
+                <h2>Languages</h2>
+                <ul>
+                    <li>English</li>
+                    <li>Tamil</li>
+                </ul>
+            </div>
+            <div class="section">
+             <h2>Contact Information</h2>
+             <ul>
+                <li>Email: <a href="mailto:example@gmail.com">example@gmail.com</a></li>
+                <li>Phone: +91 123456789</li>
+                <li>LinkedIn: <a href="https://linkedin.com/in/yourprofile">linkedin.com/in/yourprofile</a></li>
+                <li>GitHub: <a href="https://github.com/yourusername">github.com/yourusername</a></li>
+             </ul>
+            </div>   
+        </div> 
+    </section>
+
+    <section id="todo" class="todo-list">
+      <h2>To-Do List</h2>
+            <div class="todo-container">
+                <input type="text" id="taskInput" placeholder="Enter a task">
+                <button id="addTaskButton">Add Task</button>
+                <ul id="taskList"></ul>
+            </div>
+    </section>
+
+    <section id="products" class="product-listing">
+      <div class="container">
+        <div class="shopping">
+            <h1>Online Shopping</h1>
+            <p>Your favorite products at the best prices!</p>
+        </div>
+        <div class="filter-sort">
+            <div>
+                <label for="category-filter">Filter by category:</label>
+                <select id="category-filter">
+                    <option value="all">All</option>
+                    <option value="electronics">Electronics</option>
+                    <option value="fashion">Fashion</option>
+                    <option value="home">Home Appliances</option>
+                </select>
+            </div>
+            <div>
+                <label for="price-filter">Filter by price:</label>
+                <select id="price-filter">
+                    <option value="all">All</option>
+                    <option value="low">Below ₹500</option>
+                    <option value="mid">₹500 - ₹1000</option>
+                    <option value="high">Above ₹1000</option>
+                </select>
+            </div>
+        </div>
+        <div class="product-list" id="product-list">
+            <!-- Products will be dynamically generated here -->
+             <button class="buy-btn">Buy Now</button> 
+        </div>
+       </div>
+
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 Your Name</p>
+  </footer>
+
+  <script>
+    // Navigation Logic
+    document.querySelectorAll('nav a').forEach(link => {
+      link.addEventListener('click', () => {
+        document.querySelectorAll('section').forEach(section => {
+          section.classList.remove('active');
+        });
+        document.getElementById(link.dataset.target).classList.add('active');
+      });
+    });
+
+    // To-Do List Logic
+        const taskInput = document.getElementById("taskInput");
+        const addTaskButton = document.getElementById("addTaskButton");
+        const taskList = document.getElementById("taskList");
+
+        addTaskButton.addEventListener("click", function() {
+            const taskText = taskInput.value.trim();
+            if (taskText === "") {
+                alert("Please enter a task.");
+                return;
+            }
+
+            const li = document.createElement("li");
+            li.textContent = taskText;
+
+            const deleteButton = document.createElement("button");
+            deleteButton.textContent = "Delete";
+            deleteButton.addEventListener("click", function() {
+                li.remove();
+            });
+
+            li.appendChild(deleteButton);
+            taskList.appendChild(li);
+
+            taskInput.value = "";
+        });
+
+        
+    // Product Listing Logic
+    const products = [
+            { id: 1, name: "Mobile phone", price: 12999, category: "electronics", image: "images/mobilephone.jpeg" },
+            { id: 2, name: "Casual Shirt", price: 459, category: "fashion", image: "images/shirt.jpeg" },
+            { id: 3, name: "OLED Television", price: 14999, category: "home", image: "images/tv.jpeg" },
+            { id: 4, name: "Air Buds", price: 1599, category: "electronics", image: "images/airbuds.jpeg" },
+            { id: 5, name: "Casual Pant", price: 699, category: "fashion", image: "images/pant.jpeg" },
+            { id: 6, name: "Iron Box", price: 1299, category: "home", image: "images/ironbox.jpeg" },
+            { id: 7, name: "Bluetooth Speaker", price: 750, category: "electronics", image: "images/bluetoothspeaker.jpeg" },
+            { id: 8, name: "Sun Glass", price: 499, category: "fashion", image: "images/sunglass.jpeg" },
+            { id: 9, name: "Washing Machine", price: 10999, category: "home", image: "images/washingmachine.jpeg" },
+            { id: 10, name: "Loptop", price: 35458, category: "electronics", image: "images/loptop.jpeg" },
+            { id: 11, name: "Casual Shoes", price: 659, category: "fashion", image: "images/shoes.jpeg" }
+        ];
+
+        const productList = document.getElementById('product-list');
+        const categoryFilter = document.getElementById('category-filter');
+        const priceFilter = document.getElementById('price-filter');
+
+        function displayProducts(filteredProducts) {
+            productList.innerHTML = '';
+            filteredProducts.forEach(product => {
+                const productDiv = document.createElement('div');
+                productDiv.classList.add('product');
+                productDiv.innerHTML = `
+                    <img src="${product.image}" alt="${product.name}">
+                    <h3>${product.name}</h3>
+                    <p>Category: ${product.category}</p>
+                    <p>Price: ₹${product.price}</p>
+                    <button class="buy-btn">Buy Now</button>
+                `;
+                productList.appendChild(productDiv);
+            });
+            document.querySelectorAll('.buy-btn').forEach(button => {
+                button.addEventListener('click', () => {
+                  alert('Thank you for purchasing!');
+                });
+            });
+
+        }
+
+        function filterProducts() {
+            let filteredProducts = products;
+            const categoryValue = categoryFilter.value;
+            const filterValue = priceFilter.value;
+
+            if (categoryValue !== 'all') {
+                filteredProducts = filteredProducts.filter(product => product.category === categoryValue);
+            }
+
+            if (filterValue === 'low') {
+                filteredProducts = filteredProducts.filter(product => product.price < 500);
+            } else if (filterValue === 'mid') {
+                filteredProducts = filteredProducts.filter(product => product.price >= 500 && product.price <= 1000);
+            } else if (filterValue === 'high') {
+                filteredProducts = filteredProducts.filter(product => product.price > 1000);
+            }
+
+            displayProducts(filteredProducts);
+        }
+        
+        categoryFilter.addEventListener('change', filterProducts);
+        priceFilter.addEventListener('change', filterProducts);
+
+        // Initial display of products
+        displayProducts(products);
+  </script>
+</body>
+</html>
